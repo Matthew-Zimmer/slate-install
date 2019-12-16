@@ -1,6 +1,7 @@
 #!/bin/bash
 
 if [[ $# > 0 ]]
+then
     cd $1
 fi
 
@@ -15,10 +16,10 @@ REPOS="
 
 for repo in $REPOS
 do
-    cd $(git clone https://github.com/Matthew-Zimmer/slate_install.git |& cut -d "'" -f 2)
+    cd $(git clone $repo |& cut -d "'" -f 2)
     mkdir bin
+    cd bin
     cmake ..
-    cmake --build .
-    cmake --install .
+    cmake --build . --target install
     cd ../..
 done
