@@ -17,8 +17,8 @@ REPOS="
 for repo in $REPOS
 do
     cd $(git clone $repo |& cut -d "'" -f 2)
-    mkdir bin
-    cd bin
+    mkdir build
+    cd build
     cmake ..
     cmake --build . --target install
     cd ../..
